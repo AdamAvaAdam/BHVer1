@@ -1,8 +1,0 @@
-module.exports=function(html){const script=String.raw`<script>
-(function(){
- const page=document.createElement('section');page.id='map-page';page.hidden=true;page.innerHTML='<iframe id="map-frame" title="Bản đồ nhiệt và phân tích thị trường" style="height:calc(100dvh - 70px);min-height:0"></iframe>';document.body.append(page);
- const nav=document.querySelector('nav'),button=document.createElement('button'),rec=document.createElement('button');button.id='map-tab';button.textContent='Bản đồ nhiệt';rec.id='recommendation-tab';rec.textContent='Gợi ý bán hàng';for(const b of [rec,button]){b.setAttribute('role','tab');b.setAttribute('aria-selected','false');nav.append(b);}window.vtRecommendationProvince='';let current='sales';
- const priorTab=tab;tab=function(name){current=name;priorTab(name==='recommendations'?'sales':name);page.hidden=name!=='map';button.setAttribute('aria-selected',String(name==='map'));rec.setAttribute('aria-selected',String(name==='recommendations'));if(name==='recommendations')document.getElementById('sales-tab').setAttribute('aria-selected','false');document.getElementById('sales-frame').contentWindow?.VTRecommendations?.setMode(name==='recommendations'?'recommendations':'catalog');if(name==='map'){const f=document.getElementById('map-frame');if(!f.getAttribute('src'))f.src='/map';else f.contentWindow?.VTMap?.resize();}};
- document.getElementById('sales-frame').addEventListener('load',()=>document.getElementById('sales-frame').contentWindow?.VTRecommendations?.setMode(current==='recommendations'?'recommendations':'catalog'));button.onclick=()=>tab('map');rec.onclick=()=>tab('recommendations');
-})();
-</script>`;return html.replace('</body>',script+'</body>');};

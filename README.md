@@ -38,3 +38,7 @@ Bấm **Cập nhật** trên thanh đầu trang hoặc **Cập nhật giá & t�
 Service worker chỉ lưu vỏ ứng dụng công khai; dữ liệu kinh doanh nằm trong kho thiết bị, không nằm trong cache công khai hay mã phát hành. Không lưu access token/refresh token Google. Ghi chú/chương trình tự tạo vẫn giữ riêng; sao lưu ghi chú không kèm bản tải dữ liệu. Có nút **Đăng xuất / tắt ghi nhớ** và **Xóa bản dữ liệu tải về trên máy**. Cần dùng cùng trình duyệt; xóa dữ liệu trình duyệt hoặc chế độ riêng tư có thể làm mất bản lưu. Không thêm máy chủ.
 
 Đã kiểm tra 16 bài kiểm tra tự động và luồng trình duyệt với dữ liệu mẫu: đóng/mở lại không Google, hết phiên vẫn xem được, tải lại thật khi ngoại tuyến qua service worker, đối soát bản đồ đã lưu, cập nhật thành công/thất bại, giữ ghi chú, đăng xuất/xóa bản lưu và tồn Có/báo giá/gợi ý. Không đưa fixture hoặc dữ liệu kinh doanh thật vào bản phát hành.
+
+## Xem nhanh không đăng nhập — 11/11/2026
+
+Mở web là vào thẳng Tồn kho · Chương trình, không cần đăng nhập Google. Lần đầu trên mỗi máy/điện thoại, dán 2 link "Xuất bản lên web" dạng CSV: tab **Hàng tồn** và tab **Zalo_Giá** (app Zalo AI Sales đẩy 15 phút/lần: giá gốc, hỗ trợ, giá cuối, ngày hiệu lực, số CSKM). Link lưu trên trình duyệt đó; mở lại là xem. Chỉ 2 tab này công khai; tab khách hàng/đơn vẫn riêng. Phần khách hàng, doanh số, bản đồ vẫn cần Đăng nhập Google (Tài khoản & dữ liệu → Đăng xuất → Đăng nhập Google).

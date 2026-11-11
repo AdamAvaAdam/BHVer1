@@ -51,6 +51,22 @@ assert.equal(Math.round(run('customers()[0].sharpTotal*108/100')),300000000);
 assert.equal(run('customers()[1].sharpTotal'),0);
 assert.ok(!promo.includes('function sharpAllocations('));
 assert.ok(promo.includes('tourDetail + sharpDetail'));
+const lookup=html.slice(html.indexOf('function At('),html.indexOf('var Et=',html.indexOf('function At(')));
+vm.runInContext('const nt=n=>String(n||"").trim().toUpperCase();'+lookup+';globalThis.buildLookup=Pt;',ctx);
+const result=ctx.buildLookup({
+  products:[{ProductSku:'A1',ProductName:'Tên trong danh mục',ModelCode:'MODEL1'}],
+  stockRows:[[null,'Nhóm hàng'],['A-1','Tủ 4 cánh','Chiếc',7],['A1','Mã riêng','Chiếc',3],['ONLY','Hàng có tồn','Chiếc','Có']],
+  priceRows:[['A-1','Tủ 4 cánh','MODEL1','9.000.000','1.000.000','8.000.000','01/11/2026','CT','Giá lẻ']],
+  specRows:[['A-1','Tủ 4 cánh','Làm đá tự động']],
+  priceName:'Giá'
+});
+assert.equal(result.items.find(p=>p.sku==='A-1').programs[0].price,8000000);
+assert.equal(result.items.find(p=>p.sku==='A-1').stock,7);
+assert.equal(result.items.find(p=>p.sku==='A1').programs.length,0);
+assert.equal(result.items.find(p=>p.sku==='ONLY').stock,'Có');
+assert.match(result.items.find(p=>p.sku==='A-1').sheetSpec,/Làm đá tự động/);
+assert.ok(html.includes('tab.sheetId===0&&tab.title==="Hàng tồn"'));
+assert.ok(html.includes('tab.sheetId===2018616519&&tab.title==="Giá"'));
 assert.equal(fs.readFileSync(__dirname+'/index-code.txt','utf8'),html);
 // The changed embedded scripts must remain allowed by the CSP.
 const crypto=require('node:crypto');const csp=html.match(/script-src ([^;]+);/)[1];let count=0;

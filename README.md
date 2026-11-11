@@ -13,7 +13,7 @@ Bản HTML dùng trên GitHub Pages, gồm tồn kho/báo giá, doanh số/chư�
 Client ID là mã công khai. KHÔNG đưa Client secret, JSON Service Account, khóa Warehouse hoặc access token lên GitHub. Website chỉ dùng GET với Google Sheets và không lưu token vào localStorage.
 
 ## Dữ liệu
-Các tab WH_ chứa khách hàng, sản phẩm, tồn, đơn, chi tiết, chương trình, doanh số và thông tin lượt đồng bộ. Giá lấy D/E/F từ tab giá có ngày mới nhất; dùng F là giá cuối, không trừ E thêm lần nữa. Tọa độ lấy từ tab Định vị; doanh số bản đồ lấy từ đầu đơn WH_, không lấy doanh số nhập tay trong bảng định vị.
+Các tab WH_ chứa khách hàng, sản phẩm, tồn, đơn, chi tiết, chương trình, doanh số và thông tin lượt đồng bộ. Tra cứu đọc đúng tab Hàng tồn (gid 0), Giá (gid 2018616519) và Thông số sản phẩm trong trang tính Tồn - Giá. Cột F của Giá là giá cuối. Mã hàng nối theo mã vật tư, giữ riêng các biến thể. Tọa độ lấy từ tab Định vị; doanh số bản đồ lấy từ đầu đơn WH_, không lấy doanh số nhập tay trong bảng định vị.
 Khi cần dữ liệu mới hoặc kỳ cũ, mở công cụ đồng bộ trên Windows và chọn phạm vi đủ lịch sử. Chương trình và bản đồ báo thiếu dữ liệu nếu khoảng cần xem vượt phạm vi đã đồng bộ. Không coi số liệu thiếu là kết quả đủ kỳ.
 
 ## Sử dụng
